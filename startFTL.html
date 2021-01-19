@@ -1,11 +1,15 @@
 <html>
 <link rel="stylesheet" href="styles.css">
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <script type = "text/javascript" src = "http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script> -->
     <body>
 
         <div class="Title">
             <h2>Fill the Lyric</h2>
             <p>Created by Jason Truong<p>
         </div>
+
+        <p id = "lyrics">aa</p>
     
     
         <div class = "Main">
@@ -28,7 +32,7 @@
 
     <script>
         var allSongs = [["HM6iBXWEw9Y", "I just wish I knew I'd ", "miss", " it at the time."], ["fHI8X4OXluQ", "No one around to ", "judge", " me."], ["jPan651rVMs", "Playing my songs, into my ", "sides", "."],
-                        ["COz9lDCFHjw", "You got ", "issues", "I won't mention for now"], ["Q9pjm4cNsfc", "I'm real ", "discreet", " like a theif in the night."], ["scS64l3wvew", "You just wanna ", "fight", " cause you're lonely."],
+                        ["COz9lDCFHjw", "You got ", "issues", "I won't mention for now"], ["Q9pjm4cNsfc", "I'm real ", "discrete", " like a theif in the night."], ["scS64l3wvew", "You just wanna ", "fight", " cause you're lonely."],
                         ["rYE9WB22KZo", "I moved on but I still ", "remember", " a thing or two"], ["p3YdcQg7cE8", "We in the ", "club", " like Fetty."], ["hFb306iwoQI", "Up's the only ", "direction", " I see."],
                         ["-OnXVKyj2t0", "You hear but you don't ", "listen", " ."], ["0gvEfIbGJxQ", "Riding around, your ", "love", " be shakin' me up"], ["SHfB5HBFeTc", "So I can ", "jeopardize", "that for one of these ho*s."],
                         ["6oHdAA3AqnE", "I'm tryna keep my faith. But I'm ", "looking", " for more."]];
@@ -38,21 +42,23 @@
         var index = Math.floor(Math.random() * allSongs.length);
         var question = allSongs[index];
         //question = allSongs[allSongs.length-1];
+        
         document.getElementById("left").innerHTML = question[1];
         document.getElementById("right").innerHTML = question[3];
 
         document.getElementById("video").src = "https://www.youtube.com/embed/" + question[0] + "?rel=0";
-        
-        
+
         var input = document.getElementById("input");
         var button = document.getElementById("submit");
         var background = document.getElementById("normBackground");
+        
         
         input.addEventListener("input", function(){
             if (button.id != "submit"){
                 button.id = "submit";
                 button.innerHTML = "SUBMIT";
             }
+
         });
 
         button.addEventListener("click", function(){
@@ -68,7 +74,11 @@
                 button.id = "incorrect";
             }
 
+            $.get("https://api.lyrics.ovh/v1/Rich%20Brian/Drive%20Safe", function(data) {
+                lyrics.innerHTML = data.lyrics;
+            });
             }, false);
+            
     </script>
 
 </html>
