@@ -1,6 +1,25 @@
 {
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1",
+    "puppeteer": "^5.5.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "Fill-The-Lyric",
+  "description": "HTML Project",
+  "version": "1.0.0",
+  "main": "scraper.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasont9923/Fill-The-Lyric.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasont9923/Fill-The-Lyric/issues"
+  },
+  "homepage": "https://github.com/jasont9923/Fill-The-Lyric#readme"
 }
