@@ -1,31 +1,30 @@
 <html>
 <link rel="stylesheet" href="styles.css">
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script type = "text/javascript" src = "http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script> -->
+<script defer src="http://localhost:8080/socket.io/socket.io.js"></script>
+<script defer src="script.js"></script>
+
     <body>
 
         <div class="Title">
             <h2>Fill the Lyric</h2>
             <p>Created by Jason Truong<p>
         </div>
-
-        <p id = "lyrics">aa</p>
-    
     
         <div class = "Main">
-            <p id="left"></p>
-            <textarea id="input"></textarea>
-            <p id="right"></p>
-            
+            <form id="input-container">
+                <p id="left"></p>
+                <input type="text" id="input"></textarea>
+                <p id="right"></p>
+
+                <div class="videodiv">
+                    <iframe id="video"width="560" height="315"></iframe>
+                </div>
+
+                <button type="submit" id="submit">Submit</button>
+
+            </form>
             
         </div>
-    
-        <div class="videodiv">
-            <iframe id="video"width="560" height="315"></iframe>
-        </div>
-        
-    
-        <div id="submit">Submit</div>
 
     </body>
 
@@ -77,9 +76,6 @@
                 button.id = "incorrect";
             }
 
-            $.get("https://api.lyrics.ovh/v1/Rich%20Brian/Drive%20Safe", function(data) {
-                lyrics.innerHTML = data.lyrics;
-            });
             }, false);
             
     </script>

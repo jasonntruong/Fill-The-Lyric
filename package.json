@@ -2,12 +2,13 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
     "express": "^4.17.1",
-    "puppeteer": "^5.5.0"
+    "puppeteer": "^5.5.0",
+    "socket.io": "^3.1.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "devStart": "nodemon server.js"
   },
-  "name": "Fill-The-Lyric",
+  "name": "fill-the-lyric",
   "description": "HTML Project",
   "version": "1.0.0",
   "main": "scraper.js",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/jasont9923/Fill-The-Lyric/issues"
   },
-  "homepage": "https://github.com/jasont9923/Fill-The-Lyric#readme"
+  "homepage": "https://github.com/jasont9923/Fill-The-Lyric#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
