@@ -1,10 +1,7 @@
 var http = require('http');
 var express = require('express');
 var path = require('path');
-var fs = require('fs');
 var socket = require('socket.io');
-const { inherits } = require('util');
-
 
 var app = express();
 
@@ -24,18 +21,25 @@ const server = app.listen(8080, () => {
 
 //Socket setup
 
-const io = socket(server);
+const io = socket(server)
+
+const users = {}
 
 io.on("connection", socket => {
   console.log("Made socket connection");
   socket.emit('chat-message', 'Hello World')
+  
   socket.on('send-input', message => {
     socket.broadcast.emit('chat-message', message)
   })
+
+  socket.on('new-player', name  => {
+    users[socket.id] = name
+    socket.broadcast.emit('player-connected', name)
+  })
+
+  socket.on('disconnect', message => {
+    console.log("Player disconnected")
+    socket.broadcast.emit('chat-message', 'Goodbye World')
+  })
 });
-
-// const io = require('socket.io')(3000)
-
-// io.on('connection', socket => {
-//   socket.emit('chat-message', 'Hello World')
-// })
